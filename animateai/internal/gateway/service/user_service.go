@@ -70,6 +70,7 @@ func (s *UserService) Register(ctx context.Context, userName, password string) (
 		Password:  string(hashedPassword),
 		Status:    1,         // 正常状态
 		AccountID: accountID, // 全局唯一的账户ID
+		// Name 字段不设置，为空时前端会使用 UserName 显示
 	}
 
 	err = s.userDAO.Create(user)
@@ -194,17 +195,8 @@ func (s *UserService) UpdateUserInfo(ctx context.Context, userID uint, userInfo 
 		existingUser.UserName = userInfo.UserName
 	}
 
-	// 如果提供了新昵称，检查是否已被使用
-	if userInfo.Name != "" && userInfo.Name != existingUser.Name {
-		// 检查新昵称是否已被其他用户使用
-		otherUser, err := s.userDAO.GetByName(userInfo.Name)
-		if err != nil && !errors.Is(err, gorm.ErrRecordNotFound) {
-			hlog.CtxErrorf(ctx, "Failed to check name availability: %v", err)
-			return fmt.Errorf("failed to check name availability: %w", err)
-		}
-		if otherUser != nil && otherUser.ID != userID {
-			return fmt.Errorf("name already exists")
-		}
+	// 更新昵称（允许重复，不再检查唯一性）
+	if userInfo.Name != "" {
 		existingUser.Name = userInfo.Name
 	}
 

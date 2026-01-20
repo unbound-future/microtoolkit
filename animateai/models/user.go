@@ -11,7 +11,7 @@ type User struct {
 	Password        string `gorm:"type:varchar(255);not null" json:"-"`                            // 密码（不返回给前端）
 	Email           string `gorm:"type:varchar(255);index" json:"email,omitempty"`                 // 邮箱（可选）
 	Status          int    `gorm:"default:1;index" json:"status"`                                    // 状态：1=正常, 0=禁用
-	Name            string `gorm:"type:varchar(100);uniqueIndex" json:"name,omitempty"`                         // 昵称/显示名称（唯一）
+	Name            string `gorm:"type:varchar(100)" json:"name,omitempty"`                         // 昵称/显示名称（可选，为空时使用UserName）
 	Avatar          string `gorm:"type:varchar(500)" json:"avatar,omitempty"`                       // 头像URL
 	Job             string `gorm:"type:varchar(50)" json:"job,omitempty"`                          // 职位代码
 	JobName         string `gorm:"type:varchar(100)" json:"job_name,omitempty"`                    // 职位名称
