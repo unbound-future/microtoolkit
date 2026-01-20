@@ -1,0 +1,148 @@
+.variableEditor,
+.bindingEditor,
+.connectionEditor,
+.upstreamCallDescriptionEditor,
+.contextInteractionEditor {
+  border: 1px solid var(--color-border-2);
+  border-radius: 4px;
+  padding: 12px;
+  margin-top: 12px;
+  background: var(--color-fill-1);
+}
+
+.variableEditorHeader,
+.bindingEditorHeader,
+.connectionEditorHeader,
+.upstreamCallDescriptionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  font-weight: 500;
+  color: var(--color-text-1);
+}
+
+.variableList,
+.bindingList,
+.connectionList,
+.descriptionList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.variableItem,
+.bindingItem,
+.connectionItem,
+.descriptionItem {
+  padding: 12px;
+  background: #fff;
+  border: 1px solid var(--color-border-1);
+  border-radius: 4px;
+}
+
+.emptyHint {
+  text-align: center;
+  color: var(--color-text-3);
+  padding: 16px;
+  font-size: 12px;
+}
+
+.section {
+  .sectionTitle {
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--color-text-1);
+    font-size: 14px;
+  }
+}
+
+.logicSelector,
+.contextInteractionEditor {
+  .formItem {
+    margin-bottom: 16px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: var(--color-text-1);
+    }
+  }
+
+  .hint {
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--color-text-3);
+    line-height: 1.5;
+  }
+}
+
+// 下拉框样式优化
+.connectionEditor {
+  .selectSpace {
+    display: flex !important;
+    width: 100% !important;
+    align-items: center !important;
+    
+    :global(.arco-space-item) {
+      flex: 0 0 auto !important;
+      
+      &:first-child {
+        flex: 1 1 0% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+      }
+    }
+    
+    // 确保包裹 Select 的 div 也占满
+    > div:first-child {
+      flex: 1 1 0% !important;
+      min-width: 0 !important;
+      max-width: 100% !important;
+      width: 100% !important;
+    }
+  }
+
+  .nodeSelect {
+    width: 100% !important;
+    max-width: 100% !important;
+    
+    :global(.arco-select-view) {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    
+    :global(.arco-select-view-value) {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+  }
+
+  :global(.arco-select-dropdown) {
+    min-width: 100% !important;
+    width: auto !important;
+    
+    :global(.arco-select-option) {
+      white-space: normal !important;
+      word-break: break-word !important;
+      max-width: 100% !important;
+      padding: 8px 12px !important;
+      
+      :global(.arco-select-option-content) {
+        overflow: visible !important;
+        text-overflow: unset !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+        max-width: 100% !important;
+        line-height: 1.5 !important;
+      }
+    }
+  }
+}
+

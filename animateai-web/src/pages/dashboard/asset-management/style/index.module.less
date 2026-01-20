@@ -1,0 +1,84 @@
+.container {
+  padding: 20px;
+  background: #fff;
+  min-height: calc(100vh - 60px - 32px);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+
+  h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-text-1);
+  }
+}
+
+.content {
+  background: #fff;
+  border-radius: 4px;
+}
+
+.empty {
+  text-align: center;
+  padding: 40px;
+  color: var(--color-text-3);
+}
+
+.addModal {
+  :global(.arco-modal-body) {
+    padding: 24px;
+  }
+}
+
+.label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--color-text-1);
+}
+
+.hint {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--color-text-3);
+  line-height: 1.5;
+  padding: 8px 12px;
+  background: var(--color-warning-light-1);
+  border-left: 3px solid var(--color-warning-6);
+  border-radius: 2px;
+}
+
+.supportedTypes {
+  font-size: 12px;
+  color: var(--color-text-3);
+  padding: 8px 12px;
+  background: var(--color-fill-1);
+  border-radius: 4px;
+}
+
+.assetNameCell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .thumbnail {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+}
+
+.previewModal {
+  :global(.arco-modal-body) {
+    padding: 24px;
+    text-align: center;
+  }
+}
+

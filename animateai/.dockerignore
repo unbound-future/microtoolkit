@@ -1,0 +1,53 @@
+# Git相关
+.git
+.gitignore
+.gitattributes
+
+# 文档
+README.md
+*.md
+docs/
+
+# Docker相关
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# 日志文件
+*.log
+logs/
+
+# 环境变量文件
+.env
+.env.*
+
+# 临时文件
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# IDE相关
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 测试相关
+*_test.go
+test/
+tests/
+
+# 构建产物
+dist/
+build/
+bin/
+
+# 依赖目录
+node_modules/
+vendor/
+
+# 其他
+*.pid
+*.seed
+*.pid.lock

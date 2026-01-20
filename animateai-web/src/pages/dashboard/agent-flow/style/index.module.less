@@ -1,0 +1,144 @@
+.container {
+  width: 100%;
+  height: calc(100vh - 60px - 32px); // 减去 navbar 和 padding
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  overflow: hidden;
+  position: relative;
+  margin: -16px -20px 0; // 抵消 layout-content-wrapper 的 padding
+}
+
+.toolbar {
+  padding: 16px;
+  border-bottom: 1px solid var(--color-border-2);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.flowContainer {
+  flex: 1;
+  position: relative;
+  min-height: 0;
+  width: 100%;
+}
+
+.formItem {
+  margin-bottom: 16px;
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--color-text-1);
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.nodeEditorDrawer {
+  :global(.arco-drawer-body) {
+    padding: 20px;
+    overflow-y: auto;
+  }
+
+  :global(.arco-drawer-footer) {
+    border-top: 1px solid var(--color-border-2);
+    padding: 16px 20px;
+  }
+
+  :global(.arco-collapse) {
+    border: none;
+    background: transparent;
+  }
+
+  :global(.arco-collapse-item) {
+    border: 1px solid var(--color-border-2);
+    border-radius: 4px;
+    margin-bottom: 12px;
+    background: #fff;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  :global(.arco-collapse-item-header) {
+    font-weight: 500;
+    padding: 12px 16px;
+  }
+
+  :global(.arco-collapse-item-content) {
+    padding: 16px;
+  }
+
+  // 确保下拉框宽度足够，可以完全展示长文本
+  :global(.arco-select-dropdown) {
+    min-width: 100% !important;
+    max-width: 100% !important;
+    width: auto !important;
+    
+    .arco-select-option {
+      white-space: normal !important;
+      word-break: break-word !important;
+      padding: 8px 12px !important;
+      line-height: 1.5 !important;
+      
+      .arco-select-option-content {
+        overflow: visible !important;
+        text-overflow: unset !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+      }
+    }
+  }
+}
+
+.workflowListContainer {
+  padding: 24px 0; // 只保留上下 padding
+  overflow-y: auto;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  
+  // 标题和按钮容器
+  > div:first-child {
+    padding: 0 24px; // 标题区域保留左右 padding
+    margin-bottom: 16px;
+  }
+  
+  // Spin 容器
+  > :global(.arco-spin) {
+    padding: 0 24px; // 表格区域保留左右 padding
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  :global(.arco-table) {
+    width: 100% !important;
+    min-width: 100% !important;
+    table-layout: auto;
+  }
+  
+  :global(.arco-table-container) {
+    width: 100% !important;
+    min-width: 100% !important;
+  }
+  
+  :global(.arco-table-body) {
+    width: 100%;
+  }
+  
+  :global(.arco-table-header) {
+    width: 100%;
+  }
+  
+  :global(.arco-table-element) {
+    width: 100%;
+  }
+}
+

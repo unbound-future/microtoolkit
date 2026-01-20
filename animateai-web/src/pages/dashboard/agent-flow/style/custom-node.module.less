@@ -1,0 +1,88 @@
+.node {
+  padding: 12px 16px;
+  background: #fff;
+  border: 2px solid var(--color-border-2);
+  border-radius: 8px;
+  min-width: 150px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
+
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-color: var(--color-primary-light-3);
+  }
+
+  &.selected {
+    border-color: var(--color-primary-6);
+    box-shadow: 0 4px 16px rgba(var(--primary-6), 0.3);
+  }
+}
+
+.nodeContent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nodeTitle {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-text-1);
+  word-break: break-word;
+}
+
+.nodeDescription {
+  font-size: 12px;
+  color: var(--color-text-2);
+  word-break: break-word;
+  line-height: 1.5;
+}
+
+.nodeUpstreamCall {
+  font-size: 11px;
+  color: var(--color-success-6);
+  word-break: break-word;
+  line-height: 1.4;
+  margin-top: 4px;
+  padding: 6px 8px;
+  background: var(--color-success-light-1);
+  border-radius: 4px;
+  border-left: 3px solid var(--color-success-6);
+}
+
+.nodeUpstreamCallTitle {
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.nodeUpstreamCallItem {
+  padding: 2px 0;
+  border-bottom: 1px solid var(--color-success-light-2);
+  
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.nodeLogic {
+  font-size: 11px;
+  color: var(--color-primary-6);
+  margin-top: 4px;
+  padding: 2px 6px;
+  background: var(--color-primary-light-1);
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.nodeVariables {
+  font-size: 11px;
+  color: var(--color-text-3);
+  margin-top: 4px;
+}
+
+.nodeConnections {
+  font-size: 11px;
+  color: var(--color-text-3);
+  margin-top: 4px;
+}
+

@@ -1,0 +1,69 @@
+.container {
+  width: 100%;
+  height: calc(100vh - 60px - 32px); // 减去 navbar 和 padding
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  overflow: hidden;
+  position: relative;
+  margin: -16px -20px 0; // 抵消 layout-content-wrapper 的 padding
+}
+
+.templateListContainer {
+  padding: 24px 0; // 只保留上下 padding
+  overflow-y: auto;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  
+  // 标题和按钮容器
+  > div:first-child {
+    padding: 0 24px; // 标题区域保留左右 padding
+    margin-bottom: 16px;
+  }
+  
+  // Spin 容器
+  > :global(.arco-spin) {
+    padding: 0 24px; // 表格区域保留左右 padding
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  :global(.arco-table) {
+    width: 100% !important;
+    min-width: 100% !important;
+    table-layout: auto;
+  }
+  
+  :global(.arco-table-container) {
+    width: 100% !important;
+    min-width: 100% !important;
+  }
+  
+  :global(.arco-table-body) {
+    width: 100%;
+  }
+  
+  :global(.arco-table-header) {
+    width: 100%;
+  }
+  
+  :global(.arco-table-element) {
+    width: 100%;
+  }
+}
+
+.formItem {
+  margin-bottom: 16px;
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--color-text-1);
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

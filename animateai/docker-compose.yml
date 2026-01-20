@@ -1,0 +1,85 @@
+version: '3.8'
+
+services:
+  # Gateway 服务
+  gateway:
+    build:
+      context: .
+      args:
+        BUILD_TARGET: gateway
+    image: tunnel-api-gateway:${BUILD_TIMESTAMP}
+    container_name: tunnel-gateway
+    ports:
+      - "10000:3000"
+      - "10001:9090"
+    env_file:
+      - ./cmd/gateway/.env
+    environment:
+      - PORT=${GATEWAY_PORT:-3000}
+      - PROMETHEUS_PORT=${GATEWAY_PROMETHEUS_PORT:-9090}
+    restart: unless-stopped
+    networks:
+      - tunnel-network
+
+  # Billing 服务
+  billing:
+    build:
+      context: .
+      args:
+        BUILD_TARGET: billing
+    image: tunnel-api-billing:${BUILD_TIMESTAMP}
+    container_name: tunnel-billing
+    ports:
+      - "3001:3000"
+    env_file:
+      - ./cmd/billing/.env
+    environment:
+      - PORT=${BILLING_PORT:-3000}
+      - PROMETHEUS_PORT=${BILLING_PROMETHEUS_PORT:-9090}
+    restart: unless-stopped
+    networks:
+      - tunnel-network
+
+  # Controller 服务
+  controller:
+    build:
+      context: .
+      args:
+        BUILD_TARGET: controller
+    image: tunnel-api-controller:${BUILD_TIMESTAMP}
+    container_name: tunnel-controller
+    ports:
+      - "3002:3000"
+    env_file:
+      - ./cmd/controller/.env
+    environment:
+      - PORT=${CONTROLLER_PORT:-3000}
+      - PROMETHEUS_PORT=${CONTROLLER_PROMETHEUS_PORT:-9090}
+      - ApolloAppID=${APOLLO_APP_ID:-test-app}
+    restart: unless-stopped
+    networks:
+      - tunnel-network
+
+  # Patrol 服务
+  patrol:
+    build:
+      context: .
+      args:
+        BUILD_TARGET: patrol
+    image: tunnel-api-patrol:${BUILD_TIMESTAMP}
+    container_name: tunnel-patrol
+    ports:
+      - "3003:3000"
+    env_file:
+      - ./cmd/patrol/.env
+    environment:
+      - PORT=${PATROL_PORT:-3000}
+      - PROMETHEUS_PORT=${PATROL_PROMETHEUS_PORT:-9090}
+      - ApolloAppID=${APOLLO_APP_ID:-test-app}
+    restart: unless-stopped
+    networks:
+      - tunnel-network
+
+networks:
+  tunnel-network:
+    driver: bridge

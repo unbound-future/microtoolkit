@@ -1,0 +1,8 @@
+查看前端用户账户密码的登录注册页面，@login 
+1、学习前端的注册登录的接口格式和参数
+2、先在@models 里面创建对应的结构体和表
+3、在@animateai/models/init.go增加表的自动创建过程
+4、在@dao 层增加dao定义，只包含基本的增删改查 【删除是软删除
+5、在@service 层增加封装好的登录注册管理service
+6、在@handler 增加对应的登录注册接口
+7、在@animateai/internal/gateway/router.go 增加这两个接口的路由函数 
