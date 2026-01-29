@@ -212,7 +212,7 @@ function AgentFlow() {
   const fetchWorkflows = useCallback(async () => {
     setIsLoadingWorkflowList(true);
     try {
-      const response = await request.get<{ status: string; data: Array<{ flow_id: string; name: string; asset_id?: string; template_id?: string; created_at: string; updated_at: string }> }>('/api/agent-flow/list');
+      const response = await request.get<{ status: string; msg?: string; data: Array<{ flow_id: string; name: string; asset_id?: string; template_id?: string; created_at: string; updated_at: string }> }>('/api/agent-flow/list');
       if (response.data.status === 'ok' && response.data.data) {
         setWorkflows(response.data.data);
       } else {

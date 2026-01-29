@@ -1,7 +1,7 @@
 import React from 'react';
 import { Radio } from '@arco-design/web-react';
 import LogicGateSelector from './LogicGateSelector';
-import type { LogicGateType } from '@/pages/dashboard/agent-flow/types';
+import type { LogicGateType } from '../../../pages/dashboard/agent-flow/types';
 import styles from './style/components.module.less';
 
 interface LogicGateTypeSelectorProps {

@@ -42,7 +42,7 @@ function WorkflowTemplateManagement() {
   const fetchTemplates = useCallback(async () => {
     setIsLoadingTemplateList(true);
     try {
-      const response = await request.get<{ status: string; data: Array<BackendWorkflowTemplate> }>('/api/workflow-template/list');
+      const response = await request.get<{ status: string; msg?: string; data: Array<BackendWorkflowTemplate> }>('/api/workflow-template/list');
       if (response.data.status === 'ok' && response.data.data) {
         setTemplates(response.data.data.map(t => ({
           template_id: t.template_id,
@@ -108,7 +108,7 @@ function WorkflowTemplateManagement() {
     setIsLoadingTemplate(true);
     try {
       // 加载选中的工作流
-      const response = await request.get<{ status: string; data?: { flow_data: any } }>(
+      const response = await request.get<{ status: string; msg?: string; data?: { flow_data: any } }>(
         `/api/agent-flow/${selectedWorkflowId}`
       );
       if (response.data.status === 'ok' && response.data.data) {

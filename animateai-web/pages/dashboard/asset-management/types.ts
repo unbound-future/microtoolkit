@@ -1,6 +1,8 @@
 // 资产来源
 export type AssetSource = 'url' | 'file';
 
+export type AssetType = 'image' | 'audio' | 'video' | 'file';
+
 // 资产数据
 export interface Asset {
   id: string;
@@ -13,4 +15,3 @@ export interface Asset {
   uploadTime: number; // 上传时间戳
   mimeType?: string; // MIME 类型（用于预览）
 }
-

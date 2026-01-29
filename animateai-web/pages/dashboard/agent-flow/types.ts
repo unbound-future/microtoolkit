@@ -1,6 +1,23 @@
 // 上下文交互模式
 export type ContextInteractionMode = 'full' | 'incremental';
 
+export type LogicGateType = 'AND' | 'NAND' | 'OR' | 'NOR' | 'XOR' | 'XNOR';
+
+export type LogicSelectorType = 'gate' | 'variableEquality';
+
+export interface VariableEqualityConfig {
+  variableName: string;
+  compareValue: any;
+  operator: 'equals' | 'not_equals' | 'greater_than' | 'less_than' | 'contains' | 'not_contains';
+}
+
+export interface LogicSelectorConfig {
+  type: LogicSelectorType;
+  downstreamNodeIds: string[];
+  logicGate?: LogicGateType;
+  variableEquality?: VariableEqualityConfig;
+}
+
 // 节点数据类型定义（用于增量传递模式下的上下文信息）
 export interface NodeVariable {
   name: string;
@@ -44,6 +61,10 @@ export interface NodeConfig {
   
   // 关联的资产ID（可选）
   assetId?: string;
+
+  // 兼容旧数据结构：单组件模式
+  componentId?: string;
+  componentInputParams?: ComponentInputParam[];
   
   // 关联的工具组件列表（可选，支持多个组件组合）
   components?: NodeComponent[];

@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Select, Input, Button, Space, Popconfirm } from '@arco-design/web-react';
 import { IconDelete, IconPlus } from '@arco-design/web-react/icon';
 import useLocale from '@/utils/useLocale';
-import locale from '@/pages/dashboard/agent-flow/locale';
+import locale from '../../../pages/dashboard/agent-flow/locale';
 import type { Node } from 'reactflow';
-import type { UpstreamNodeBinding } from '@/pages/dashboard/agent-flow/types';
+import type { UpstreamNodeBinding } from '../../../pages/dashboard/agent-flow/types';
 import styles from './style/components.module.less';
 
 interface UpstreamBindingEditorProps {

@@ -222,25 +222,31 @@ function AssetManagement() {
           continue;
         }
 
+        const fileName = file instanceof File ? file.name : fileItem.name || 'unknown';
+
         // 验证文件大小
         if (file.size === 0) {
-          console.warn(`File ${file.name} has zero size`);
-          Message.warning(`File ${file.name} is empty, skipping...`);
+          console.warn(`File ${fileName} has zero size`);
+          Message.warning(`File ${fileName} is empty, skipping...`);
           continue;
         }
 
         // 使用一致的 fileUid 生成方式：优先使用 fileItem.uid（Arco Upload 组件提供的唯一ID）
-        const fileUid = fileItem.uid || file.uid || `file_${index}_${file.name}`;
-        const metadata = fileMetadata[fileUid] || { name: file.name || '', description: '' };
+        const fileUid = fileItem.uid || `file_${index}_${fileName}`;
+        const metadata = fileMetadata[fileUid] || { name: fileName || '', description: '' };
 
         // 创建 FormData 上传文件
         const formData = new FormData();
         // 确保传递的是 File 对象，而不是文件项
-        formData.append('file', file, file.name);
-        formData.append('name', metadata.name.trim() || file.name);
+        if (file instanceof File) {
+          formData.append('file', file, fileName);
+        } else {
+          formData.append('file', file, fileName);
+        }
+        formData.append('name', metadata.name.trim() || fileName);
         formData.append('description', metadata.description.trim() || '');
 
-        console.log(`Uploading file: ${file.name}, size: ${file.size}, type: ${file.type}`);
+        console.log(`Uploading file: ${fileName}, size: ${file.size}, type: ${file.type}`);
 
         try {
           // 对于FormData，axios会自动设置Content-Type为multipart/form-data并包含boundary
@@ -255,12 +261,12 @@ function AssetManagement() {
             uploadedAssets.push(newAsset);
           } else {
             hasError = true;
-            Message.error(response.data.msg || `Failed to upload file: ${file.name}`);
+            Message.error(response.data.msg || `Failed to upload file: ${fileName}`);
           }
         } catch (fileError: any) {
           hasError = true;
-          console.error(`Failed to upload file ${file.name}:`, fileError);
-          Message.error(fileError.response?.data?.msg || `Failed to upload file: ${file.name}`);
+          console.error(`Failed to upload file ${fileName}:`, fileError);
+          Message.error(fileError.response?.data?.msg || `Failed to upload file: ${fileName}`);
         }
       }
 

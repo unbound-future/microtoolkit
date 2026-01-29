@@ -1,8 +1,8 @@
 import React from 'react';
 import { Select, Input } from '@arco-design/web-react';
 import useLocale from '@/utils/useLocale';
-import locale from '@/pages/dashboard/agent-flow/locale';
-import type { NodeVariable, VariableEqualityConfig } from '@/pages/dashboard/agent-flow/types';
+import locale from '../../../pages/dashboard/agent-flow/locale';
+import type { NodeVariable, VariableEqualityConfig } from '../../../pages/dashboard/agent-flow/types';
 import styles from './style/components.module.less';
 
 interface VariableEqualitySelectorProps {

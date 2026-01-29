@@ -1,7 +1,7 @@
 import React from 'react';
 import { Select } from '@arco-design/web-react';
 import useLocale from '@/utils/useLocale';
-import locale from '@/pages/dashboard/agent-flow/locale';
+import locale from '../../../pages/dashboard/agent-flow/locale';
 import styles from './style/components.module.less';
 
 interface LogicGateSelectorProps {

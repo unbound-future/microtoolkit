@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Input, Select, Button, Space, Popconfirm } from '@arco-design/web-react';
 import { IconDelete, IconPlus } from '@arco-design/web-react/icon';
 import useLocale from '@/utils/useLocale';
-import locale from '@/pages/dashboard/agent-flow/locale';
-import type { NodeVariable } from '@/pages/dashboard/agent-flow/types';
+import locale from '../../../pages/dashboard/agent-flow/locale';
+import type { NodeVariable } from '../../../pages/dashboard/agent-flow/types';
 import styles from './style/components.module.less';
 
 interface VariableEditorProps {

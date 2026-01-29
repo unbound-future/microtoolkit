@@ -1,7 +1,7 @@
 import React from 'react';
 import { Radio, Space } from '@arco-design/web-react';
 import useLocale from '@/utils/useLocale';
-import locale from '@/pages/dashboard/agent-flow/locale';
+import locale from '../../../pages/dashboard/agent-flow/locale';
 import NodeSelector from './NodeSelector';
 import LogicGateTypeSelector from './LogicGateTypeSelector';
 import VariableEqualitySelector from './VariableEqualitySelector';
@@ -12,7 +12,7 @@ import type {
   LogicGateType,
   NodeVariable,
   VariableEqualityConfig,
-} from '@/pages/dashboard/agent-flow/types';
+} from '../../../pages/dashboard/agent-flow/types';
 import styles from './style/components.module.less';
 
 interface LogicSelectorV2Props {

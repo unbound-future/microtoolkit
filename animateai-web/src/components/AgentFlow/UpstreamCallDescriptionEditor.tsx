@@ -2,7 +2,7 @@ import React from 'react';
 import { Input, Button, Space, Popconfirm } from '@arco-design/web-react';
 import { IconDelete, IconPlus } from '@arco-design/web-react/icon';
 import useLocale from '@/utils/useLocale';
-import locale from '@/pages/dashboard/agent-flow/locale';
+import locale from '../../../pages/dashboard/agent-flow/locale';
 import styles from './style/components.module.less';
 
 interface UpstreamCallDescriptionEditorProps {

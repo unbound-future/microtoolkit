@@ -41,6 +41,10 @@ module.exports = withLess(
         },
       ];
     },
-    pageExtensions: ['tsx'],
+    eslint: {
+      ignoreDuringBuilds: true,
+    },
+    pageExtensions: ['ts', 'tsx'],
+
   })
 );

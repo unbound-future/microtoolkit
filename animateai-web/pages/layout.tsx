@@ -17,14 +17,14 @@ import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import qs from 'query-string';
-import Navbar from '../components/NavBar';
-import Footer from '../components/Footer';
+import Navbar from '@/components/NavBar';
+import Footer from '@/components/Footer';
 import useRoute, { IRoute } from '@/routes';
 import useLocale from '@/utils/useLocale';
 import { GlobalState } from '@/store';
 import getUrlParams from '@/utils/getUrlParams';
 import styles from '@/style/layout.module.less';
-import NoAccess from '@/pages/exception/403';
+import NoAccess from './exception/403';
 
 const MenuItem = Menu.Item;
 const SubMenu = Menu.SubMenu;
@@ -237,7 +237,7 @@ function PageLayout({ children }: { children: ReactNode }) {
                 </div>
               )}
               <Content>
-                {routeMap.current.has(pathname) ? children : <NoAccess />}
+                {pathname.startsWith('/api/') || routeMap.current.has(pathname) ? children : <NoAccess />}
               </Content>
             </div>
             {showFooter && <Footer />}

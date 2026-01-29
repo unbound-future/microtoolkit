@@ -20,6 +20,7 @@ func InitTables() error {
 		&ToolComponent{},
 		&AgentFlow{},
 		&WorkflowTemplate{},
+        &PurchaseOrder{},
 	)
 	if err != nil {
 		return err

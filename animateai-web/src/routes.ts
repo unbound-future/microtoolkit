@@ -39,6 +39,24 @@ export const routes: IRoute[] = [
         name: 'menu.dashboard.workflowTemplate',
         key: 'dashboard/workflow-template',
       },
+      {
+        name: 'menu.dashboard.purchase',
+        key: 'dashboard/purchase',
+      },
+      {
+        name: 'menu.dashboard.orderQuery',
+        key: 'dashboard/order-query',
+        requiredPermissions: [
+          { resource: 'menu.dashboard.orderQuery', actions: ['write'] },
+        ],
+      },
+      {
+        name: 'menu.dashboard.userManagement',
+        key: 'dashboard/user-management',
+        requiredPermissions: [
+          { resource: 'menu.dashboard.userManagement', actions: ['write'] },
+        ],
+      },
     ],
   },
   {

@@ -6,21 +6,21 @@ import Head from 'next/head';
 import type { AppProps } from 'next/app';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import '../style/global.less';
+import '@/style/global.less';
 import { ConfigProvider } from '@arco-design/web-react';
 import zhCN from '@arco-design/web-react/es/locale/zh-CN';
 import enUS from '@arco-design/web-react/es/locale/en-US';
 import axios from 'axios';
 import request from '@/utils/request';
 import NProgress from 'nprogress';
-import rootReducer from '../store';
-import { GlobalContext } from '../context';
+import rootReducer from '@/store';
+import { GlobalContext } from '@/context';
 import checkLogin from '@/utils/checkLogin';
 import changeTheme from '@/utils/changeTheme';
 import useStorage from '@/utils/useStorage';
 import Layout from './layout';
-import '../mock';
-import { generatePermission } from '../routes';
+import '@/mock';
+import { generatePermission } from '@/routes';
 
 const store = createStore(rootReducer);
 
@@ -34,7 +34,7 @@ export default function MyApp({
   Component,
   renderConfig,
 }: AppProps & { renderConfig: RenderConfig }) {
-  const { arcoLang, arcoTheme } = renderConfig;
+  const { arcoLang, arcoTheme } = renderConfig || {};
   const [lang, setLang] = useStorage('arco-lang', arcoLang || 'en-US');
   const [theme, setTheme] = useStorage('arco-theme', arcoTheme || 'light');
   
@@ -248,6 +248,9 @@ export default function MyApp({
 // fix: next build ssr can't attach the localstorage
 MyApp.getInitialProps = async (appContext) => {
   const { ctx } = appContext;
+  if (ctx.req && ctx.req.url.startsWith('/api')) {
+    return {};
+  }
   const serverCookies = cookies(ctx);
   return {
     renderConfig: {
